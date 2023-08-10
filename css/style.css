@@ -1,0 +1,270 @@
+/*CSS Variables*/
+:root {
+    --color-white: white;
+    --color-orange: orange;
+    --color-black: black;
+}
+
+/*Reset styles*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Header*/
+header {
+    position: relative;
+    height: 4rem;
+    border-top: 2px solid var(--color-black);
+    border-bottom: 2px solid var(--color-black);
+    margin-bottom: 2rem;
+    background-color: var(--color-orange);
+    z-index: 5;
+}
+
+/*Navigation Menu*/
+nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    margin-right: 1rem;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+ 
+nav ul li a {
+    font-family: 'Roboto', sans-serif;
+    font-size: .95rem;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+    position: relative;
+}
+nav ul li a:hover {
+    color: var(--color-black);
+}
+
+nav ul li a::before,
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    height: 2px;
+    width: 0;
+    background-color: #1d1d1d;
+    transition: all .5s;
+}
+
+nav ul li a::before {
+    /* left: 0; */
+    left: 50%;
+}
+nav ul li a::after {
+    /* right: 0; */
+    right: 50%;
+}
+
+nav ul li a:hover::before,
+nav ul li a:hover::after {
+    width: 50%;
+}
+
+nav a.selected-link {
+    color: var(--color-black);
+}
+
+figure.logo img {
+    display: block;
+    width: 100px;
+    object-fit: cover;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.hamburger-menu {
+    position: absolute;
+    top: 18px;
+    right: 13px;
+    z-index: 10;
+    cursor: pointer;
+    display: none;
+}
+
+.hamburger-menu .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-black);
+    margin-top: 5px;
+    transition: all .5s;
+}
+
+.hamburger-menu.change .line1 {
+    transform: rotate(45deg) translate(5px, 2px);
+}
+
+.hamburger-menu.change .line2 {
+    opacity: 0;
+}
+
+.hamburger-menu.change .line3 {
+    transform: rotate(-45deg) translate(9px, -7px);
+}
+
+/*Page Title*/
+h2.title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/*Container*/
+section.container {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.container article {
+    border: 3px solid var(--color-orange);
+    box-shadow: 0 0 5px var(--color-black), 0 0 0 3px var(--color-black), 0 0 0 3px var(--color-black);
+    border-radius: 5px;
+    flex-basis: 37%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: .45rem;
+}
+
+article img {
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 3px solid var(--color-black);
+}
+
+article h3 {
+    font-size: 1.05rem;
+    margin-top: 2px;
+}
+
+article span {
+    font-size: .95rem;
+}
+
+.container a {
+    margin: .45rem 0 .2rem 0;
+    font-size: .85rem;
+    border: 1px solid var(--color-black);
+    border-radius: 3px;
+    padding: .35rem .6rem;
+    color: white;
+    background-color: var(--color-orange);
+    text-decoration: none;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.container a:hover {
+    color: var(--color-black);
+}
+
+/*Products page*/
+.container button {
+    background-color: var(--color-black);
+    padding: 5.5px 9px;
+    margin-top: 5px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid var(--color-orange);
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: all .4s;
+}
+
+.container button:hover {
+    color: var(--color-orange);
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+/*Media Queries*/
+@media(max-width: 1000px) {
+    section.container {
+        flex-wrap: wrap;
+        margin-bottom: 1.3rem;
+    }
+
+    .container article {
+        flex-basis: 48%;
+    }
+}
+
+@media(max-width: 700px) {
+    nav {
+        width: 7rem;
+        height: 6rem;
+        position: absolute;
+        top: 3.9rem;
+        left: -7rem;
+        border-top: 0px solid var(--color-black);
+        border-right: 2px solid var(--color-black);
+        border-bottom: 2px solid var(--color-black);
+        background-color: var(--color-orange);
+        transition: all .5s;
+    }
+
+    nav.change {
+        left: 0px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin: .7rem 0 0 .7rem;
+    }
+
+    nav ul li {
+        margin-bottom: .8rem;
+    }
+
+    figure.logo img {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .hamburger-menu {
+        display: block;
+        top: 16px;
+        right: 20px;
+        animation: move-menu 2s infinite;
+    }
+
+    @keyframes move-menu {
+        0% {transform: scale(1);}
+        50% {transform: scale(1.1);}
+        100% {transform: scale(1);}
+    }
+
+    .container article {
+        flex-basis: 70%;
+    }
+}
